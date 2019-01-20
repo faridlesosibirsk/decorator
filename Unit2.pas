@@ -2,70 +2,47 @@ unit Unit2;
 
 interface
 
+uses
+  Vcl.ExtCtrls {TPanel},
+  unit3;
+
 type
-  TAbstractPage = class
-    function Print: string; virtual; abstract;
+  IControler = interface
+    function getPanel: TPanel;
   end;
 
-  TPage = class(TAbstractPage)
-    function Print: string; override;
-  end;
-
-  TDecoratorPage = class(TAbstractPage)
+  Controler = class(TInterfacedObject, IControler)
+  private
     /// <link>aggregation</link>
-    wrap: TAbstractPage;
-    function Print: string; override;
-    constructor create(Page: TAbstractPage); virtual; abstract;
-  end;
-
-  TNamberPage = class(TDecoratorPage)
-    function Print: string; override;
-    constructor create(Page: TAbstractPage); override;
-  end;
-
-  TLaterPage = class(TDecoratorPage)
-    function Print: string; override;
-    constructor create(Page: TAbstractPage); override;
+    Director1: Director;
+    /// <link>aggregation</link>
+    //Panel1: Panel;
+    //Button1: Button;
+  public
+    function getPanel: TPanel;
+  published
+    constructor create;
   end;
 
 implementation
 
-{ TNamberPage }
+{ Controler }
 
-constructor TNamberPage.create(Page: TAbstractPage);
+constructor Controler.create;
 begin
-  wrap := Page;
+  Director1:= Director.Create;
+
+  //Panel1:= Panel.Create;
+  //Director1.makeLab1(Panel1);
+
+  //Button1:= Button.Create;
+  Director1.makeButton;
 end;
 
-function TNamberPage.Print: string;
+function Controler.getPanel: TPanel;
 begin
-  result := 'TNamberPage'+wrap.Print;
-end;
-
-{ TDecoratorPage }
-
-function TDecoratorPage.Print: string;
-begin
-  result := 'TDecoratorPage';
-end;
-
-{ TPage }
-
-function TPage.Print: string;
-begin
-  result := 'TPage';
-end;
-
-{ TLaterPage }
-
-constructor TLaterPage.create(Page: TAbstractPage);
-begin
-  wrap := Page;
-end;
-
-function TLaterPage.Print: string;
-begin
-  result := 'TLaterPage'+wrap.Print;
+  //result:=Panel1.getResult;
+  result:=Director1.getPanel;
 end;
 
 end.
