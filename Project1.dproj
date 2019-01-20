@@ -87,13 +87,10 @@
 				<Form>Form1</Form>
 				<FormType>dfm</FormType>
 			</DCCReference>
-			<DCCReference Include="Unit2.pas"/>
 			<DCCReference Include="Unit3.pas"/>
 			<None Include="ModelSupport_Project1\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\default.txvpck"/>
-			<None Include="ModelSupport_Project1\Unit2\default.txvpck"/>
 			<None Include="ModelSupport_Project1\Project1\default.txvpck"/>
-			<None Include="ModelSupport_Project1\Unit2\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\Unit1\default.txvpck"/>
 			<None Include="ModelSupport_Project1\Unit1\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\Unit3\default.txaPackage"/>

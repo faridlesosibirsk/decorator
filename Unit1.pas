@@ -3,8 +3,8 @@ unit Unit1;
 interface
 
 uses
+  Unit3,
   Vcl.ExtCtrls {TPanel},
-  Unit2,
   Vcl.Forms;
 
 type
@@ -23,7 +23,7 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  Controler1:=Controler.create;
+  Controler1:=Director.create;
   Controler1.getPanel.Parent:=self;
 end;
 

@@ -3,6 +3,7 @@ unit Unit3;
 interface
 
 uses
+
   Vcl.Controls {TAlign} ,
   Vcl.StdCtrls {TButton} ,
   classes {TNotifyEvent} ,
@@ -16,7 +17,11 @@ type
     procedure free;
   end;
 
-  Director = class
+  IControler = interface
+  function getPanel: TPanel;
+  end;
+
+  Director = class(TInterfacedObject, IControler)
   private
     /// <link>aggregation</link>
     Builder1: Builder;
@@ -28,6 +33,8 @@ type
     procedure makePanel;
     procedure makeButton;
     function getPanel: TPanel;
+  published
+    constructor create;
   end;
 
   Panel = class(TInterfacedObject, Builder)
@@ -94,6 +101,11 @@ procedure Director.buttonClick(Sender: TObject);
 begin
   Builder1.free;
   makePanel;
+end;
+
+constructor Director.create;
+begin
+  makeButton;
 end;
 
 function Director.getPanel: TPanel;
